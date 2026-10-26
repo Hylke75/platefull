@@ -1,21 +1,16 @@
 // API-contract §10: consistente foutcodes, geen ruwe AI-prompt of gevoelige gezinsdata in foutresponses.
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
+import { ApiError, type ApiErrorCode } from '@/core/errors';
 
-export type ApiErrorCode =
-  | 'invalid_input' | 'unauthenticated' | 'forbidden' | 'not_found' | 'revision_conflict'
-  | 'unsafe_or_unavailable' | 'rate_limited' | 'provider_unavailable' | 'consent_required' | 'not_configured' | 'internal';
+export { ApiError, type ApiErrorCode };
+
 
 const STATUS: Record<ApiErrorCode, number> = {
   invalid_input: 400, unauthenticated: 401, forbidden: 403, consent_required: 403, not_found: 404,
   revision_conflict: 409, unsafe_or_unavailable: 422, rate_limited: 429, provider_unavailable: 503, not_configured: 503, internal: 500,
 };
 
-export class ApiError extends Error {
-  constructor(readonly code: ApiErrorCode, message?: string, readonly details?: Record<string, unknown>) {
-    super(message ?? code);
-  }
-}
 
 export function ok<T>(data: T, init?: ResponseInit): NextResponse {
   return NextResponse.json(data, { ...init, headers: { 'Cache-Control': 'no-store', ...(init?.headers ?? {}) } });

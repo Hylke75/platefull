@@ -1,4 +1,5 @@
-import { requireHousehold } from '@/server/context';
+import { addManualItem } from '@/core/actions';
+import { actionCtx, requireHousehold } from '@/server/context';
 import { ApiError, handler, idempotencyKey, ok, parseJson, uuid } from '@/server/http';
 import { manualItemSchema } from '@/server/schemas';
 
@@ -12,11 +13,7 @@ export const POST = handler(async (req: Request, { params }: { params: Promise<{
   const prior = await ctx.supabase.from('idempotency_keys').select('response').eq('household_id', ctx.householdId).eq('key', idem).maybeSingle();
   if (prior.data) return ok(prior.data.response, { status: 201 });
   const body = await parseJson(req, manualItemSchema);
-  const ins = await ctx.supabase.from('shopping_items').insert({
-    household_id: ctx.householdId, list_id: listId, description: body.description, qty: body.qty ?? null, unit: body.unit ?? null,
-    origin: 'manual', category: 'overig', updated_by: ctx.user.id,
-  }).select('*').single();
-  if (ins.error) throw ins.error;
-  await ctx.supabase.from('idempotency_keys').insert({ household_id: ctx.householdId, key: idem, endpoint: 'shopping_item_add', response: { item: ins.data } });
-  return ok({ item: ins.data }, { status: 201 });
+  const item = await addManualItem(actionCtx(ctx), listId, body.description, body.qty, body.unit);
+  await ctx.supabase.from('idempotency_keys').insert({ household_id: ctx.householdId, key: idem, endpoint: 'shopping_item_add', response: { item } });
+  return ok({ item }, { status: 201 });
 });
