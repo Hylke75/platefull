@@ -1,0 +1,96 @@
+{
+  "name": "Plateful",
+  "version": "2.0",
+  "intent": "Warm, editorial, friendly, family-first food app",
+  "colors": {
+    "forest": "#124E43",
+    "forestDark": "#0A332D",
+    "mandarin": "#F26B3A",
+    "oatMilk": "#FBF8F1",
+    "sage": "#DDE9DE",
+    "peach": "#F9DFD1",
+    "lemon": "#F8EDBB",
+    "ink": "#223E35",
+    "subtle": "#77857B",
+    "line": "#EBEBE2",
+    "screen": "#FFFCF6",
+    "matchPanel": "#EDF3E8",
+    "identityPanel": "#E9F0E6",
+    "iconIvory": "#FFF7E8"
+  },
+  "typography": {
+    "display": "Fraunces",
+    "body": "DM Sans",
+    "displayFallback": "Georgia, serif",
+    "bodyFallback": "system-ui, -apple-system, sans-serif",
+    "googleFontsStylesheet": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500,30,1;9..144,600,30,1;9..144,700,30,1&display=swap",
+    "heroTitle": {
+      "fontSize": "clamp(54px,5.8vw,88px)",
+      "weight": 600,
+      "lineHeight": 1.05,
+      "letterSpacing": "-3.8px"
+    },
+    "sectionTitle": {
+      "fontSize": "clamp(40px,4.3vw,62px)",
+      "weight": 600,
+      "lineHeight": 1.12,
+      "letterSpacing": "-2.4px"
+    },
+    "appTitle": {
+      "fontSize": "29px",
+      "weight": 600,
+      "lineHeight": 1.12
+    },
+    "appWordmark": {
+      "fontSize": "23px",
+      "weight": 700
+    },
+    "bodyIntro": {
+      "fontSize": "18px",
+      "lineHeight": 1.75
+    }
+  },
+  "layout": {
+    "maxPageWidth": "1640px",
+    "desktopTopbarPadding": "28px clamp(24px,5.4vw,90px)",
+    "heroColumns": "minmax(0,1fr) minmax(520px,1.06fr)",
+    "heroMinHeight": "830px",
+    "heroColumnGap": "36px",
+    "phoneWidth": "358px",
+    "phoneHeight": "690px",
+    "phoneBorder": "7px solid #244239",
+    "phoneBorderRadius": "46px",
+    "phoneStatusBarHeight": "32px",
+    "phoneNavigationHeight": "66px",
+    "primaryButtonRadius": "999px",
+    "principleCardRadius": "30px",
+    "principleCardMinHeight": "295px",
+    "foodHeroHeight": "233px",
+    "familyAvatarSize": "41px",
+    "appLogoSize": "22px",
+    "webLogoSize": "40px",
+    "webLogoMobileSize": "34px"
+  },
+  "breakpointsPx": [1250, 1050, 700, 390],
+  "assets": {
+    "logo": "dist/assets/plateful-icon.svg",
+    "symbol": "dist/assets/plateful-symbol.svg",
+    "monochromeSymbol": "dist/assets/plateful-icon-mono.svg",
+    "appIcon1024": "dist/assets/plateful-app-icon-1024.png",
+    "wraps": "dist/assets/wraps.png",
+    "roastedBowl": "dist/assets/roasted-bowl.png",
+    "pasta": "dist/assets/pasta.png"
+  },
+  "screens": ["home", "planb", "family", "person", "week", "groceries", "cook"],
+  "sourceOfTruth": [
+    "dist/index.html",
+    "dist/styles.css",
+    "dist/brand-v2.css",
+    "dist/app.js"
+  ],
+  "notes": [
+    "Do not substitute colors, typography or image assets.",
+    "The v2 logo is mandatory. The earlier squiggle symbol is deprecated.",
+    "This is a visual functional demo, not a production AI or allergy-safety engine."
+  ]
+}

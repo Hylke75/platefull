@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plateful — alle design-elementen v2</title>
+  <link rel="icon" href="./assets/plateful-icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500,30,1;9..144,600,30,1;9..144,700,30,1&display=swap" rel="stylesheet">
+  <link href="./styles.css" rel="stylesheet">
+  <link href="./brand-v2.css" rel="stylesheet">
+  <style>
+    .kit{max-width:1440px;padding:42px 42px 80px;margin:auto}
+    .kit-header{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:60px;flex-wrap:wrap}
+    .kit-header .brand{font-size:31px}
+    .kit-kicker{font-size:11px;font-weight:800;letter-spacing:1.5px;color:#738c7c}
+    .kit-title{font:600 clamp(48px,6vw,82px)/1.04 var(--display);letter-spacing:-2.7px;margin:13px 0;color:var(--forest-dark)}
+    .kit-title em{color:var(--orange)}
+    .kit-intro{max-width:780px;color:#77857a;font-size:17px;line-height:1.8;margin:0 0 50px}
+    .kit-section{margin-top:62px}
+    .kit-section>h2{font:600 41px/1.2 var(--display);color:var(--forest);margin:0 0 7px}
+    .kit-section>p{font-size:13px;color:#849388;margin:0 0 24px}
+    .kit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .kit-panel{background:white;border:1px solid #e8ede4;border-radius:25px;padding:25px;min-width:0}
+    .kit-panel.dark{background:var(--forest);color:#fff}
+    .kit-panel.sage{background:var(--sage)}
+    .kit-label{font-size:10px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;display:block;color:#88a092;margin-bottom:18px}
+    .kit-panel.dark .kit-label{color:#bbd8c7}
+    .kit-logo-row{display:flex;align-items:center;gap:13px;min-height:90px}
+    .kit-logo-row img{width:54px;height:54px}
+    .kit-logo-row strong{font:700 36px var(--display);letter-spacing:-1.2px;color:var(--forest)}
+    .kit-logo-row strong i{font-style:normal;color:var(--orange)}
+    .kit-panel.dark .kit-logo-row strong{color:#fff}
+    .kit-icon-stage{display:flex;align-items:center;justify-content:center;gap:23px;min-height:150px}
+    .kit-icon-stage img:first-child{width:100px;height:100px}
+    .kit-icon-stage img:nth-child(2){width:42px;height:42px}
+    .kit-icon-stage img:nth-child(3){width:24px;height:24px}
+    .kit-type-head{font:600 41px/1.1 var(--display);letter-spacing:-1.2px;color:var(--forest);margin:10px 0}
+    .kit-type-head em{font-weight:500;color:var(--orange)}
+    .kit-type-body{font:500 18px/1.6 var(--body);color:#4f655b}
+    .kit-type-ui{font:800 13px/1.5 var(--body);color:var(--forest);letter-spacing:1.25px}
+    .kit-swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+    .kit-color{min-height:145px;border-radius:20px;padding:17px;display:flex;flex-direction:column;justify-content:flex-end;font-size:11px;font-weight:800;color:var(--forest)}
+    .kit-color span{font-weight:500;margin-top:4px}
+    .kit-color.negative{color:white}
+    .kit-actions{display:flex;gap:13px;align-items:center;flex-wrap:wrap}
+    .kit-actions .btn{flex:initial}
+    .kit-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+    .kit-cards .principle-card{min-height:230px}
+    .kit-tag-row{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+    .kit-tag-row .taste-status{font-size:12px}
+    .kit-column{display:flex;flex-direction:column;gap:13px}
+    .kit-column .family-person{margin:0}
+    .kit-column .parent-toggle{margin:0}
+    .kit-photo{width:100%;height:230px;object-fit:cover;border-radius:19px}
+    .kit-food-card{height:250px}
+    .kit-phone-nav{border:1px solid #e3ece4;border-radius:16px;height:78px;max-width:400px;overflow:hidden;position:relative}
+    .kit-phone-nav .phone-nav{height:100%}
+    .kit-meter{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+    .kit-meter span{background:#e9f0e6;color:var(--forest);font-size:12px;font-weight:800;border-radius:9px;padding:9px 12px}
+    .kit-footer{border-top:1px solid #e8ede4;margin-top:60px;padding-top:23px;font-size:12px;color:#8d9f90;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    @media(max-width:980px){.kit-grid,.kit-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.kit-swatches{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:630px){.kit{padding:28px 20px 55px}.kit-grid,.kit-cards{grid-template-columns:1fr}.kit-swatches{grid-template-columns:repeat(2,minmax(0,1fr))}.kit-title{font-size:52px}.kit-section>h2{font-size:36px}}
+  </style>
+</head>
+<body>
+<main class="kit">
+  <header class="kit-header"><div class="brand"><span class="brand-symbol"><img src="./assets/plateful-icon.svg" alt=""></span><span>plateful<span class="brand-dot">.</span></span></div><a href="./index.html" class="top-link">← Terug naar het appontwerp</a></header>
+  <div class="kit-kicker">VISUELE BIBLIOTHEEK · V2.0</div>
+  <h1 class="kit-title">Elk detail.<br><em>Één stijl.</em></h1>
+  <p class="kit-intro">Deze pagina bevat de losse zichtbare bouwstenen. Gebruik voor exacte geometrie en gedrag altijd de meegeleverde HTML, de bestaande CSS en het JavaScript. Alles wat hieronder staat is een voorbeeld van de definitieve Plateful-identiteit.</p>
+
+  <section class="kit-section">
+    <h2>01. Beeldmerk & woordmerk</h2><p>Gedeelde tafel, individuele smaken; geen hertekening.</p>
+    <div class="kit-grid">
+      <div class="kit-panel"><span class="kit-label">Primaire logo-opstelling</span><div class="kit-logo-row"><img src="./assets/plateful-icon.svg" alt=""><strong>plateful<i>.</i></strong></div></div>
+      <div class="kit-panel sage"><span class="kit-label">Appicoon · drie maten</span><div class="kit-icon-stage"><img src="./assets/plateful-icon.svg" alt="Plateful appicoon groot"><img src="./assets/plateful-icon.svg" alt="Medium"><img src="./assets/plateful-icon.svg" alt="Klein"></div></div>
+      <div class="kit-panel dark"><span class="kit-label">Logo op forest</span><div class="kit-logo-row"><img src="./assets/plateful-icon.svg" alt=""><strong>plateful<i>.</i></strong></div></div>
+    </div>
+  </section>
+
+  <section class="kit-section">
+    <h2>02. Kleuren</h2><p>Dit zijn de zes zichtbare merkbasiskleuren; statuskleuren en extra oppervlaktes staan in de CSS.</p>
+    <div class="kit-swatches">
+      <div class="kit-color negative" style="background:#124E43">Forest<span>#124E43</span></div>
+      <div class="kit-color negative" style="background:#F26B3A">Mandarin<span>#F26B3A</span></div>
+      <div class="kit-color" style="background:#FBF8F1;border:1px solid #eee6d9">Oat Milk<span>#FBF8F1</span></div>
+      <div class="kit-color" style="background:#DDE9DE">Sage<span>#DDE9DE</span></div>
+      <div class="kit-color" style="background:#F9DFD1">Peach<span>#F9DFD1</span></div>
+      <div class="kit-color" style="background:#F8EDBB">Lemon<span>#F8EDBB</span></div>
+    </div>
+  </section>
+
+  <section class="kit-section">
+    <h2>03. Typografie</h2><p>Fraunces voor karakter; DM Sans voor rust en leesbaarheid.</p>
+    <div class="kit-grid">
+      <div class="kit-panel"><span class="kit-label">Fraunces · kop</span><div class="kit-type-head">Samen<br><em>aan tafel.</em></div></div>
+      <div class="kit-panel"><span class="kit-label">DM Sans · body</span><div class="kit-type-body">Een maaltijd die bij jullie past. Minder discussie, minder denkwerk.</div></div>
+      <div class="kit-panel"><span class="kit-label">DM Sans · interface</span><div class="kit-type-ui">DE SLIMME GEZINSASSISTENT</div><div class="kit-type-body" style="font-size:13px;margin-top:16px">Smaakprofiel · 12–15 px · 700/800</div></div>
+    </div>
+  </section>
+
+  <section class="kit-section">
+    <h2>04. Knoppen & acties</h2><p>Primaire, secundaire en Plan B-oproepen.</p>
+    <div class="kit-grid">
+      <div class="kit-panel"><span class="kit-label">Web · primair</span><a class="primary-cta" href="./index.html#demo">Ontdek het ontwerp<span>↗</span></a></div>
+      <div class="kit-panel"><span class="kit-label">App · acties</span><div class="kit-actions"><button class="btn btn-primary">✓ Dit eten we</button><button class="btn btn-plain">↻ Ander idee</button><button class="btn btn-orange">Vind mijn plan B →</button></div></div>
+      <div class="kit-panel"><span class="kit-label">Plan B · secundair</span><div class="planb-strip" style="margin:0;cursor:default"><span><strong>↗ Loopt de dag anders?</strong><small>Regel direct een slim plan B</small></span><span class="arrow-circle">→</span></div></div>
+    </div>
+  </section>
+
+  <section class="kit-section">
+    <h2>05. Voorkeuren, status & regie</h2><p>Persoonlijk en duidelijk; allergieën zijn altijd harde uitsluitingen.</p>
+    <div class="kit-grid">
+      <div class="kit-panel"><span class="kit-label">Smaakstatussen</span><div class="kit-tag-row"><span class="taste-status like">Heerlijk</span><span class="taste-status dislike">Echt niet lekker</span><span class="taste-status care">Liever niet</span><span class="taste-status strict">Allergie — nooit overrulen</span></div><div class="match-badge" style="display:inline-block">✓ Goed passend</div></div>
+      <div class="kit-panel"><span class="kit-label">Persoon</span><div class="family-person" style="cursor:default"><span class="person-avatar p3">S</span><span class="person-detail"><strong>Sam <span style="font-size:10px;color:#91a294">· Tiener</span></strong><small>Geen rauwe tomaat</small></span><span class="person-arrow">›</span></div></div>
+      <div class="kit-panel"><span class="kit-label">Ouderkeuze</span><div class="parent-toggle"><span><b>Ouder beslist over de maaltijd</b><small>De mening van je kind blijft bewaard.</small></span><span class="switch is-on" aria-label="Ingeschakeld"></span></div></div>
+    </div>
+  </section>
+
+  <section class="kit-section">
+    <h2>06. Foodfotografie & maaltijden</h2><p>Originele fotografie en de exacte overlay- en beeldstijl.</p>
+    <div class="kit-grid">
+      <div class="kit-panel"><span class="kit-label">Hero · wraps</span><article class="dinner-hero kit-food-card"><img src="./assets/wraps.png" alt="Wraps"><div class="dinner-overlay"><span class="small-glass-tag">✳ Slim voorstel voor jullie</span><div><h3>Wraps voor iedereen</h3><div class="dinner-metadata"><span>◷ 20 min</span><span>◉ 4 personen</span></div></div></div></article></div>
+      <div class="kit-panel"><span class="kit-label">Rijstbowl</span><img class="kit-photo" src="./assets/roasted-bowl.png" alt="Kleurrijke rijstbowl"></div>
+      <div class="kit-panel"><span class="kit-label">Pasta</span><img class="kit-photo" src="./assets/pasta.png" alt="Romige tomatenpasta"></div>
+    </div>
+  </section>
+
+  <section class="kit-section">
+    <h2>07. Navigatie & bediening</h2><p>De bestaande app gebruikt vier vaste tabs.</p>
+    <div class="kit-grid">
+      <div class="kit-panel"><span class="kit-label">Onderste navigatie</span><div class="kit-phone-nav"><div class="phone-nav"><div class="nav-button active"><span class="nav-icon">⌂</span><span>Vandaag</span></div><div class="nav-button"><span class="nav-icon">▦</span><span>Week</span></div><div class="nav-button"><span class="nav-icon">♡</span><span>Gezin</span></div><div class="nav-button"><span class="nav-icon">☷</span><span>Lijst</span></div></div></div></div>
+      <div class="kit-panel"><span class="kit-label">Dagdoppen</span><div class="day-line"><div class="day-pills"><span class="day-pill"><b>MA</b><strong>19</strong></span><span class="day-pill selected"><b>DI</b><strong>20</strong></span><span class="day-pill"><b>WO</b><strong>21</strong></span><span class="day-pill"><b>DO</b><strong>22</strong></span><span class="day-pill"><b>VR</b><strong>23</strong></span></div></div></div>
+      <div class="kit-panel"><span class="kit-label">Vinklijsten</span><div class="check-section" style="margin:0"><h3>Groente & fruit</h3><label class="shopping-item"><input type="checkbox" checked><span>Paprika’s</span><span class="amount">2 stuks</span></label><label class="shopping-item"><input type="checkbox"><span>Avocado</span><span class="amount">1 stuk</span></label></div></div>
+    </div>
+  </section>
+
+  <section class="kit-section">
+    <h2>08. Grote kaarten</h2><p>De drie visuele productprincipes in de exact gebruikte basisklassen.</p>
+    <div class="kit-cards">
+      <article class="principle-card olive"><div class="principle-icon">01 <span>✳</span></div><h3>Jullie smaken,<br>één tafel.</h3><p>Persoonlijke voorkeuren per gezinslid.</p></article>
+      <article class="principle-card apricot"><div class="principle-icon">02 <span>↗</span></div><h3>Het antwoord<br>staat al klaar.</h3><p>Een voorstel dat bij iedereen past.</p></article>
+      <article class="principle-card butter"><div class="principle-icon">03 <span>↻</span></div><h3>De dag verandert?<br>Wij bewegen mee.</h3><p>Met Plan B blijft het haalbaar.</p></article>
+    </div>
+  </section>
+
+  <section class="kit-section">
+    <h2>09. Maten & ruimte</h2><p>Exacte implementatie staat in de CSS; dit zijn de belangrijkste referenties.</p>
+    <div class="kit-panel kit-meter"><span>Phone 358 × 690 px</span><span>Phone radius 46 px</span><span>Bottom navigation 66 px</span><span>Photo hero 233 px</span><span>Header logo 40 px</span><span>App logo 22 px</span><span>Card radius 30 px</span><span>Responsive: 1250 / 1050 / 700 / 390 px</span></div>
+  </section>
+
+  <footer class="kit-footer"><span>Plateful · volledige elementbibliotheek v2</span><a href="./index.html">Terug naar het complete appontwerp ↗</a></footer>
+</main>
+</body>
+</html>
