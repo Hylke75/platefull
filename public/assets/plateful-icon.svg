@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Plateful: iedereen aan één tafel">
+  <rect width="48" height="48" rx="14" fill="#124E43"/>
+  <!-- Four places around one plate. The mandarin place represents every unique taste. -->
+  <circle cx="24" cy="24" r="8.6" fill="#FFF7E8"/>
+  <circle cx="24" cy="24" r="4.2" fill="#124E43"/>
+  <rect x="19" y="7.2" width="10" height="6.4" rx="3.2" fill="#FFF7E8"/>
+  <rect x="7.2" y="19" width="6.4" height="10" rx="3.2" fill="#FFF7E8"/>
+  <rect x="34.4" y="19" width="6.4" height="10" rx="3.2" fill="#FFF7E8"/>
+  <rect x="19" y="34.4" width="10" height="6.4" rx="3.2" fill="#F26B3A"/>
+</svg>

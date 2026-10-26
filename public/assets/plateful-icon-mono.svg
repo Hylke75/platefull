@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Plateful monochroom tafelsymbool">
+  <circle cx="24" cy="24" r="8.6" fill="#000"/>
+  <circle cx="24" cy="24" r="4.2" fill="#fff"/>
+  <rect x="19" y="7.2" width="10" height="6.4" rx="3.2" fill="#000"/>
+  <rect x="7.2" y="19" width="6.4" height="10" rx="3.2" fill="#000"/>
+  <rect x="34.4" y="19" width="6.4" height="10" rx="3.2" fill="#000"/>
+  <rect x="19" y="34.4" width="10" height="6.4" rx="3.2" fill="#000"/>
+</svg>

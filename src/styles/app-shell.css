@@ -1,0 +1,46 @@
+/* Aanvullingen voor de echte app (/app, /login, /onboarding). Hergebruikt uitsluitend de tokens en
+   componentstijlen van het designsystem v2.0; hier staan alleen de schil en nieuwe states. */
+.app-body{background:var(--oat)}
+.app-shell{position:relative;display:flex;flex-direction:column;height:100dvh;max-width:480px;margin:0 auto;background:#fffcf6;overflow:hidden}
+@media(min-width:520px){.app-shell{box-shadow:0 0 0 1px #e9eee6,0 24px 60px #21473f1f}}
+.app-shell .screen-scroll{font-size:13px}
+.app-shell .phone-nav{height:calc(66px + env(safe-area-inset-bottom));padding-bottom:calc(6px + env(safe-area-inset-bottom))}
+.app-shell .nav-button{text-decoration:none}
+.app-shell .toast{bottom:calc(83px + env(safe-area-inset-bottom))}
+.app-shell .toast button{background:transparent;border:0;color:#ffdcc8;font-weight:800;font-size:11px;margin-left:8px;text-decoration:underline}
+.app-view a.btn{text-decoration:none}
+.match-badge.is-check{background:#fff1c3;color:#967029}
+.dish-placeholder{height:100%;width:100%;display:grid;place-items:center;background:#dfebdf;color:#89ad92;font-size:62px}
+.week-image.dish-placeholder{font-size:26px}
+.field{display:block;margin:0 0 14px}
+.field>span{display:block;font-size:12px;font-weight:800;color:var(--forest-dark);margin:0 0 7px}
+.field small{display:block;font-size:10px;color:#7a8b7e;margin-top:5px;line-height:1.5}
+.text-input{width:100%;background:#fff;border:1px solid #e4e9e0;border-radius:12px;outline:0;padding:11px;font-size:13px;color:var(--forest)}
+.text-input:focus{border-color:#8fbc9a}
+.text-input[aria-invalid=true]{border-color:#e19b71}
+.choice-row{display:flex;flex-wrap:wrap;gap:6px}
+.choice{border:1.5px solid #eeeae0;background:#fff;border-radius:10px;padding:7px 10px;font-size:11px;font-weight:800;color:var(--forest-dark)}
+.choice[aria-pressed=true]{border-color:var(--forest);background:#e3efdf;color:#397451}
+.choice.strict[aria-pressed=true]{border-color:#8f2c27;background:#f3d5cd;color:#8f2c27}
+.form-error{font-size:11px;color:#b95f3a;font-weight:700;margin:6px 0 0}
+.wizard-progress{display:flex;gap:5px;margin:0 0 16px}
+.wizard-progress span{flex:1;height:4px;border-radius:4px;background:#e5eee4}
+.wizard-progress span.done{background:var(--forest)}
+.hard-section{border:1px solid #f3d5cd;background:#fff8f5;border-radius:15px;padding:12px;margin-top:14px}
+.hard-section h3{font-size:12px;color:#8f2c27;margin:0 0 4px}
+.hard-section p{font-size:10px;color:#a26b5a;margin:0 0 8px;line-height:1.5}
+.diff-list{display:flex;flex-direction:column;gap:6px;margin:10px 0;font-size:11px;color:#416b56}
+.diff-list div{display:flex;justify-content:space-between;gap:8px;background:#fff;border-radius:10px;padding:8px 10px}
+.diff-list b{color:var(--forest)}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #ededeb;font-size:11px;color:#365442;font-weight:700}
+.attendee-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.attendee-chip{border:1.5px solid #d4e5d3;background:#fff;border-radius:20px;padding:5px 10px 5px 5px;display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;color:var(--forest)}
+.attendee-chip .person-avatar{width:22px;height:22px;font-size:9px}
+.attendee-chip[data-att=no]{opacity:.5;text-decoration:line-through}
+.attendee-chip[data-att=unknown]{border-style:dashed}
+.skeleton{background:linear-gradient(90deg,#f4f2ea,#ece9df,#f4f2ea);background-size:200% 100%;animation:skeleton 1.2s infinite;border-radius:22px}
+@keyframes skeleton{to{background-position:-200% 0}}
+.config-note{font-size:11px;color:#766735;background:#f6ecca;border-radius:12px;padding:10px 12px;margin:10px 0}
+/* Landingspagina: clip-laag voor de ambient-cirkels (zie Landing.tsx). Visueel identiek, geen horizontale overflow. */
+.landing-root{position:relative}
+.ambient-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none}
