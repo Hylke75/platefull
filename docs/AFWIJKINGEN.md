@@ -22,6 +22,15 @@ Het functioneel ontwerp (§17) vraagt om afwijkingen expliciet te documenteren. 
 13. **Accepteren van een niet-voorgesteld gerecht** zet het slot eerst op 'proposed' (aparte revisie) en daarna 'accepted', omdat §8.1 draft → accepted niet toestaat.
 14. **AI-provider:** volgens §12 OpenAI (Responses API, Structured Outputs), model via `OPENAI_MODEL`. Profielnamen worden geredigeerd vóór verzending.
 
+## Native app
+
+15. **Bundle-id/package `nl.linkandlead.platefull`** — aanname op basis van owner `link-and-lead`; pas aan vóór de eerste store-build, daarna is hij vast.
+16. **Fraunces als statische fonts.** De web gebruikt Fraunces als variabel font met `SOFT 30`/`WONK 1`; `@expo-google-fonts/fraunces` levert de standaardinstantie. Letters zijn daardoor iets strakker dan op het web. Oplossing: een eigen gegenereerde Fraunces-instantie met dezelfde assen meeleveren.
+17. **Iconen in de app** (navigatie, ✳ ◷ ◉ ♡) zijn dezelfde typografische tekens als in het ontwerp, met tekstweergave geforceerd (geen emoji).
+18. **Inloggen in de app alleen met de 6-cijferige code** (geen magic link-deeplink); uitnodigen via het deelmenu met een `platefull://`-link of te plakken code.
+19. **Export in de app** via het deelmenu (JSON-tekst); bestand-export via de webapp.
+20. **Account definitief verwijderen** (auth-gebruiker) kan niet vanuit de app zonder service-rol; zie STATUS.
+
 ## Nog door de opdrachtgever te beslissen
 
 - Redactionele controle van `src/domain/catalog/ingredients.ts` (allergenen, dieetvlaggen) door een deskundige.

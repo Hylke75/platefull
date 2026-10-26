@@ -44,6 +44,19 @@ E2E = `scripts/e2e-app.mjs` tegen een lokale Supabase-stack (Postgres 17, GoTrue
 | 6 — P1 | ⚠️ | Zie tabel: voorraad, restjes, feedback, tafelbalans klaar; budget, notificaties, eigen recepten niet/half. |
 | 7 — Productierijp | ❌ | Nog te doen: DPIA/juridische toets, verwerkersafspraken, security review, toegankelijkheidsaudit (WCAG 2.2 AA), performancemeting, back-up/hersteltest, monitoring, hosting/deploy. |
 
+## Native app (mobile/)
+
+| Onderdeel | Status | Bewijs |
+| --- | --- | --- |
+| Schermen | ✅ | Login (code), onboarding O-03…O-08, Vandaag, Plan B, Week, Gezin, Smaakprofiel, Lijst (realtime), Voorraad, Restjes, Kookstand, Gerecht, Waarom, Instellingen, Uitnodiging |
+| Gedeelde engine en datalaag | ✅ | Zelfde `src/domain` en `src/core` als web; zit in de Hermes-bundel |
+| Bundels iOS/Android/web | ✅ | `npx expo export --platform all` |
+| Kwaliteit | ✅ | `tsc` strict, `expo lint` 0 meldingen, `expo-doctor` 20/20 |
+| E2E | ✅ | 14 stappen via react-native-web tegen lokale Supabase (o.a. allergie + dieet, accepteren, boodschappen, Plan B + undo, nieuwe allergie blokkeert geaccepteerd gerecht) |
+| Op echt toestel / simulator | ❌ | Niet getest in deze omgeving (geen Xcode/Android-emulator). Eerst een development build op toestellen draaien. |
+| EAS-koppeling | ⚠️ | `eas init --id <project-ID>` nog uitvoeren (project-ID en Expo-login nodig). |
+| Account definitief verwijderen | ⚠️ | App trekt rechten direct in en verwijdert gezinsdata; het auth-account zelf vereist de service-rol (web-API of nog te bouwen Edge Function). |
+
 ## Bekende beperkingen
 
 - Voor een gezin met een allergie zijn aanvankelijk weinig gerechten beschikbaar: samengestelde producten zijn pas bruikbaar na etiketcontrole. Dat volgt de conservatieve veiligheidsregel (R-01); de UI verwijst ernaar.

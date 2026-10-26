@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Plateful",
+    "slug": "platefull",
+    "owner": "link-and-lead",
+    "scheme": "platefull",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#FFFCF6",
+    "primaryColor": "#124E43",
+    "ios": {
+      "bundleIdentifier": "nl.linkandlead.platefull",
+      "supportsTablet": false,
+      "config": { "usesNonExemptEncryption": false },
+      "infoPlist": { "CFBundleDevelopmentRegion": "nl" }
+    },
+    "android": {
+      "package": "nl.linkandlead.platefull",
+      "adaptiveIcon": {
+        "backgroundColor": "#124E43",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "single"
+    },
+    "locales": { "nl": "./locales/nl.json" },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-image",
+      "expo-sqlite",
+      [
+        "expo-splash-screen",
+        { "image": "./assets/splash-icon.png", "imageWidth": 96, "backgroundColor": "#FBF8F1" }
+      ]
+    ],
+    "experiments": { "typedRoutes": true }
+  }
+}

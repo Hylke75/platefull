@@ -19,7 +19,4 @@ export function openAiConfig(): { apiKey: string; model: string; timeoutMs: numb
   return { apiKey, model, timeoutMs: Number(process.env.OPENAI_TIMEOUT_MS ?? 12000) };
 }
 
-export const CONSENT_VERSIONS = {
-  terms: 'voorwaarden-privacy-2026-10',
-  health: 'gezondheidsgegevens-2026-10',
-} as const;
+export { CONSENT_VERSIONS } from '@/core/constants';
