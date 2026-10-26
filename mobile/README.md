@@ -20,7 +20,9 @@ Lokale Supabase: `supabase start` in de hoofdmap (zie hoofd-README). Inlogcodes 
 
 ## EAS
 
-Eenmalig koppelen aan het Expo-project (zet `extra.eas.projectId` in `app.json`):
+De app is gekoppeld aan het Expo-project `link-and-lead/platefull`
+(`extra.eas.projectId` `1918aec3-7a07-4f55-8166-7c410102a20e` in `app.json`). Slug en owner moeten
+exact zo blijven, anders weigert EAS de build. Opnieuw koppelen (alleen bij een ander project):
 
 ```bash
 npx eas-cli@latest init --id <project-ID>
