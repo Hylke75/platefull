@@ -40,7 +40,12 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: mobile/package-lock.json
+          cache-dependency-path: |
+            package-lock.json
+            mobile/package-lock.json
+      # mobile/ importeert ../src/core en ../src/domain; die hebben de root-dependencies nodig.
+      - run: npm ci
+        working-directory: .
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
