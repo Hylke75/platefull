@@ -49,7 +49,7 @@ export function explain(recipe: Recipe, variantIds: string[], attendees: Attende
   });
   return {
     safe: hard.safe,
-    blockedReasons: [...new Set(hard.blocks.map((x) => describeBlock(x, names, b.catalog)))],
+    blockedReasons: [...new Set([...hard.blocks].sort((x, y) => Number(y.reason === 'contains_allergen') - Number(x.reason === 'contains_allergen')).map((x) => describeBlock(x, names, b.catalog)))],
     cautions: [...new Set(hard.cautions.map((x) => describeBlock(x, names, b.catalog)))],
     reasons: c?.reasons ?? [],
     adaptations,

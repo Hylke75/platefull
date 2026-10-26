@@ -1,0 +1,11 @@
+<!-- Plateful inlogmail (O-02): magic link én eenmalige code. In productie dezelfde tekst in het Supabase-dashboard zetten. -->
+<div style="font-family:'DM Sans',Arial,sans-serif;background:#FBF8F1;padding:24px;color:#223E35">
+  <div style="max-width:480px;margin:0 auto;background:#FFFCF6;border-radius:22px;padding:28px">
+    <p style="font:700 23px Georgia,serif;color:#124E43;margin:0 0 18px">plateful<span style="color:#F26B3A">.</span></p>
+    <h1 style="font:600 26px/1.15 Georgia,serif;color:#0A332D;margin:0 0 12px">Welkom aan tafel</h1>
+    <p style="font-size:14px;line-height:1.6;margin:0 0 18px">Klik op de knop om in te loggen, of vul deze code in de app in:</p>
+    <p style="font:800 28px/1 'DM Sans',Arial,sans-serif;letter-spacing:6px;color:#124E43;background:#EDF3E8;border-radius:14px;padding:14px;text-align:center;margin:0 0 18px">{{ .Token }}</p>
+    <p style="margin:0 0 18px"><a href="{{ .ConfirmationURL }}" style="display:inline-block;background:#124E43;color:#fff;text-decoration:none;font-weight:800;font-size:14px;padding:13px 20px;border-radius:999px">Inloggen bij Plateful →</a></p>
+    <p style="font-size:11px;color:#77857B;line-height:1.55;margin:0">De link en code verlopen na 15 minuten en werken één keer. Heb je dit niet aangevraagd? Dan kun je deze mail negeren.</p>
+  </div>
+</div>

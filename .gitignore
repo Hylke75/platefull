@@ -8,5 +8,6 @@ next-env.d.ts
 .env*.local
 /test-results/
 /.pgtest/
-/artifacts/visual/*.png
-!/artifacts/visual/.gitkeep
+/artifacts/
+/supabase/.temp/
+/supabase/.branches/

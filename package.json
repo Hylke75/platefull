@@ -13,7 +13,8 @@
     "test:db": "vitest run --project db",
     "test:visual": "node scripts/visual-compare.mjs",
     "test:e2e": "node scripts/e2e-demo.mjs",
-    "seed:sql": "tsx scripts/generate-seed-sql.ts"
+    "seed:sql": "tsx scripts/generate-seed-sql.ts",
+    "test:e2e-app": "node scripts/e2e-app.mjs"
   },
   "engines": {
     "node": ">=20"

@@ -117,9 +117,13 @@ export function Footer() {
 
 export function Landing() {
   return (
-    <>
-      <div className="ambient ambient-one" aria-hidden="true"></div>
-      <div className="ambient ambient-two" aria-hidden="true"></div>
+    <div className="landing-root">
+      {/* Afwijking t.o.v. index.html: de decoratieve blur-cirkels staan in een clip-laag, zodat ze op
+          telefoons de layout-viewport niet verbreden (origineel: 441 px breed op een 390 px-toestel). */}
+      <div className="ambient-layer" aria-hidden="true">
+        <div className="ambient ambient-one"></div>
+        <div className="ambient ambient-two"></div>
+      </div>
       <div className="page">
         <SiteHeader />
         <main id="top">
@@ -129,6 +133,6 @@ export function Landing() {
           <Footer />
         </main>
       </div>
-    </>
+    </div>
   );
 }

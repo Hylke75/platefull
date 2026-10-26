@@ -41,3 +41,6 @@
 .skeleton{background:linear-gradient(90deg,#f4f2ea,#ece9df,#f4f2ea);background-size:200% 100%;animation:skeleton 1.2s infinite;border-radius:22px}
 @keyframes skeleton{to{background-position:-200% 0}}
 .config-note{font-size:11px;color:#766735;background:#f6ecca;border-radius:12px;padding:10px 12px;margin:10px 0}
+/* Landingspagina: clip-laag voor de ambient-cirkels (zie Landing.tsx). Visueel identiek, geen horizontale overflow. */
+.landing-root{position:relative}
+.ambient-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none}

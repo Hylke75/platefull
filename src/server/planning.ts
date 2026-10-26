@@ -109,7 +109,11 @@ export function postValidate(candidate: { recipeId: string; variantIds: string[]
   const check = checkHardRules(recipe, variants as Recipe['variants'], attendees, b.input.rulesByProfile, b.catalog);
   if (!check.safe) {
     const names = new Map(b.profiles.map((p) => [p.id, p.display_name]));
-    throw new ApiError('unsafe_or_unavailable', describeBlock(check.blocks[0]!, names, b.catalog));
+    // Meest concrete reden eerst: een aanwezig allergeen zegt meer dan 'informatie onvolledig'.
+    const order = ['contains_allergen', 'medical_exclusion', 'violates_diet'];
+    const rank = (r: string) => (order.includes(r) ? order.indexOf(r) : order.length);
+    const first = [...check.blocks].sort((x, y) => rank(x.reason) - rank(y.reason))[0]!;
+    throw new ApiError('unsafe_or_unavailable', describeBlock(first, names, b.catalog));
   }
 }
 
@@ -195,10 +199,10 @@ export async function commit(ctx: Ctx, a: CommitArgs): Promise<{ slot_id: string
 export async function proposeSlot(ctx: Ctx, slotId: string, event: 'propose' | 'swap', idem: string | null, exclude?: string[]) {
   const s = await suggestForSlot(ctx, slotId, { excludeRecipeIds: exclude });
   if (!s.view.suggestion) return { view: s.view, revision: s.slot.revision };
-  const target = s.slot.state === 'proposed' || s.slot.state === 'accepted' ? 'proposed' : 'proposed';
   if (!['draft', 'proposed', 'dismissed', 'cancelled', 'blocked', 'accepted'].includes(s.slot.state)) throw new ApiError('unsafe_or_unavailable', 'Deze maaltijd is al begonnen of afgerond.');
+  // Een nieuw voorstel is altijd 'proposed'; een eerder geaccepteerd gerecht wordt daarmee weer een voorstel.
   const res = await commit(ctx, {
-    slotId, expectedRevision: s.slot.revision, idempotencyKey: idem, event, newState: target,
+    slotId, expectedRevision: s.slot.revision, idempotencyKey: idem, event, newState: 'proposed',
     recipeId: s.view.suggestion.recipeId, variantIds: s.view.suggestion.variantIds, servings: countEaters(s.attendees),
     shopping: s.slot.state === 'accepted' ? await recomputeShopping(ctx, s.slot.plan_id, { slotId, state: 'proposed' }) : null,
     proposal: proposalSnapshot(s.view, s.result, s.input),
