@@ -41,6 +41,7 @@
         { "image": "./assets/splash-icon.png", "imageWidth": 96, "backgroundColor": "#FBF8F1" }
       ]
     ],
-    "experiments": { "typedRoutes": true }
+    "experiments": { "typedRoutes": true },
+    "extra": { "eas": { "projectId": "1918aec3-7a07-4f55-8166-7c410102a20e" } }
   }
 }

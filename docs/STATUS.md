@@ -54,7 +54,7 @@ E2E = `scripts/e2e-app.mjs` tegen een lokale Supabase-stack (Postgres 17, GoTrue
 | Kwaliteit | ✅ | `tsc` strict, `expo lint` 0 meldingen, `expo-doctor` 20/20 |
 | E2E | ✅ | 14 stappen via react-native-web tegen lokale Supabase (o.a. allergie + dieet, accepteren, boodschappen, Plan B + undo, nieuwe allergie blokkeert geaccepteerd gerecht) |
 | Op echt toestel / simulator | ❌ | Niet getest in deze omgeving (geen Xcode/Android-emulator). Eerst een development build op toestellen draaien. |
-| EAS-koppeling | ⚠️ | `eas init --id <project-ID>` nog uitvoeren (project-ID en Expo-login nodig). |
+| EAS-koppeling | ✅ | `extra.eas.projectId` staat in `mobile/app.json` (link-and-lead/platefull). Voor `eas build` is nog een `EXPO_TOKEN` of Expo-login nodig. |
 | Account definitief verwijderen | ⚠️ | App trekt rechten direct in en verwijdert gezinsdata; het auth-account zelf vereist de service-rol (web-API of nog te bouwen Edge Function). |
 
 ## Bekende beperkingen
