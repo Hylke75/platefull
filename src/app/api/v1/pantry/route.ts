@@ -1,3 +1,4 @@
+import { upsertPantry } from '@/core/actions';
 import { requireHousehold } from '@/server/context';
 import { handler, idempotencyKey, ok, parseJson } from '@/server/http';
 import { loadPantry } from '@/server/repo';
@@ -13,10 +14,6 @@ export const POST = handler(async (req: Request) => {
   const ctx = await requireHousehold();
   idempotencyKey(req);
   const body = await parseJson(req, pantrySchema);
-  const res = await ctx.supabase.from('pantry_items').upsert({
-    household_id: ctx.householdId, ingredient_id: body.ingredient_id, quantity: body.quantity, unit: body.unit, status: body.status,
-    location: body.location, expires_at: body.expires_at ?? null, verified_at: body.status === 'confirmed' ? new Date().toISOString() : null,
-  }, { onConflict: 'household_id,ingredient_id' }).select('*').single();
-  if (res.error) throw res.error;
-  return ok({ item: res.data }, { status: 201 });
+  const item = await upsertPantry(ctx, body);
+  return ok({ item }, { status: 201 });
 });

@@ -40,3 +40,8 @@ export function assertSameHousehold(ctx: { householdId: string }, householdId: s
 export function requireOwner(ctx: { role: string }): void {
   if (ctx.role !== 'owner') throw new ApiError('forbidden', 'Alleen de eigenaar kan dit.');
 }
+
+/** Context voor de gedeelde core-acties (src/core/actions.ts). */
+export function actionCtx(ctx: RequestContext & { householdId: string }) {
+  return { supabase: ctx.supabase, householdId: ctx.householdId, userId: ctx.user.id };
+}

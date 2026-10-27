@@ -28,3 +28,26 @@ jobs:
       - run: npm run test:unit
       - run: npm run test:db
       - run: npm run build
+
+  mobile:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            mobile/package-lock.json
+      # mobile/ importeert ../src/core en ../src/domain; die hebben de root-dependencies nodig.
+      - run: npm ci
+        working-directory: .
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npx expo-doctor
+      - run: npx expo export --platform all --output-dir /tmp/expo-export

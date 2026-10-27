@@ -5,6 +5,15 @@ Gebouwd volgens `design-source/FUNCTIONEEL-ONTWERP-PLATEFUL-v1.md` en het visuel
 
 > Status: werkende pilotbasis (gates 0–5 grotendeels, zie [`docs/STATUS.md`](docs/STATUS.md)). **Geen afgeronde productieapp**: juridische/privacytoets, redactionele controle van de allergeneninformatie, security review en hosting ontbreken nog. Plateful is geen medisch hulpmiddel.
 
+## Twee clients, één backend
+
+| | Map | Techniek |
+| --- | --- | --- |
+| **Native app** (iOS/Android) | [`mobile/`](mobile/README.md) | Expo SDK 58, React Native, Expo Router |
+| **Webapp/PWA** + klikbare ontwerpdemo | hoofdmap | Next.js 16 |
+
+Beide gebruiken dezelfde domein- en veiligheidsengine (`src/domain`), dezelfde datalaag (`src/core`) en dezelfde Supabase-database met RLS.
+
 ## Snel starten
 
 ```bash

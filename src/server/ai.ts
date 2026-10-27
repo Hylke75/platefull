@@ -4,7 +4,7 @@ import OpenAI from 'openai';
 import { z } from 'zod';
 import type { EngineInput, EngineResult } from '@/domain/engine';
 import { openAiConfig } from '@/lib/env';
-import type { HouseholdBundle } from './planning';
+import type { AiChoice, HouseholdBundle } from '@/core/planning';
 
 /** §7.4 outputcontract. */
 export const aiOutputSchema = z.object({
@@ -34,10 +34,6 @@ const jsonSchema = {
     confidence_label: { type: 'string', enum: ['hoog', 'gemiddeld', 'laag'] },
   },
 } as const;
-
-export type AiChoice =
-  | { status: 'ok'; suggestedRecipeId: string; alternativeRecipeIds: string[]; reasons: string[] }
-  | { status: 'not_used' | 'unavailable' | 'rejected' };
 
 // Redenen mogen nooit een veiligheids- of gezondheidsclaim bevatten (§1.4, §11.3).
 const FORBIDDEN = /(veilig|allergi|allergeen|medisch|gezond|calorie|gegarandeerd|geschikt voor iedereen|afvallen)/i;
