@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Plateful",
+    "name": "Platefull",
     "slug": "platefull",
     "owner": "link-and-lead",
     "scheme": "platefull",
@@ -13,8 +13,12 @@
     "ios": {
       "bundleIdentifier": "nl.linkandlead.platefull",
       "supportsTablet": false,
-      "config": { "usesNonExemptEncryption": false },
-      "infoPlist": { "CFBundleDevelopmentRegion": "nl" }
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "CFBundleDevelopmentRegion": "nl"
+      }
     },
     "android": {
       "package": "nl.linkandlead.platefull",
@@ -30,7 +34,9 @@
       "favicon": "./assets/favicon.png",
       "output": "single"
     },
-    "locales": { "nl": "./locales/nl.json" },
+    "locales": {
+      "nl": "./locales/nl.json"
+    },
     "plugins": [
       "expo-router",
       "expo-font",
@@ -38,10 +44,20 @@
       "expo-sqlite",
       [
         "expo-splash-screen",
-        { "image": "./assets/splash-icon.png", "imageWidth": 96, "backgroundColor": "#FBF8F1" }
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 96,
+          "backgroundColor": "#FBF8F1"
+        }
       ]
     ],
-    "experiments": { "typedRoutes": true },
-    "extra": { "eas": { "projectId": "1918aec3-7a07-4f55-8166-7c410102a20e" } }
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1918aec3-7a07-4f55-8166-7c410102a20e"
+      }
+    }
   }
 }
