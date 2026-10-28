@@ -67,7 +67,7 @@ E2E = `scripts/e2e-app.mjs` tegen een lokale Supabase-stack (Postgres 17, GoTrue
 | Rooktest op de echte database | ✅ | Als ingelogde gebruiker (teruggedraaid): gezin aanmaken, notenallergie vastleggen, recept met pesto geweigerd (PT422), veilig recept voorgesteld |
 | Inlogmail | ✅ | Code van 6 cijfers, 15 minuten geldig, NL-sjabloon voor zowel inloggen als eerste aanmelding; redirect `platefull://**` toegestaan |
 | Security advisors | ✅ | Alleen 'ingelogde gebruikers kunnen SECURITY DEFINER-functies aanroepen': bewust, elke functie controleert lidmaatschap |
-| Eigen SMTP | ❌ | Standaard-SMTP van Supabase: max. 2 mails per uur. Voor testers een eigen SMTP-dienst (bijv. Resend) instellen |
+| Eigen SMTP | ✅ | Resend (`smtp.resend.com:465`), afzender `Plateful <plateful@linkandlead.nl>`, sleutel alleen voor verzenden vanaf linkandlead.nl; limiet 100 mails/uur. Proefmail via `/auth/v1/otp` afgeleverd |
 
 ## Bekende beperkingen
 
