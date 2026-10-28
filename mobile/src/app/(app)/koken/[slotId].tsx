@@ -3,17 +3,21 @@ import { useKeepAwake } from 'expo-keep-awake';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
 import { Image } from 'expo-image';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { completeSlot } from '@shared/core/actions';
 import { slotRecipeView } from '@shared/core/views';
 import { ScreenScroll } from '@/components/ScreenScroll';
 import { ActionRow, AppTitle, Button, Chip, ChipRow, FormError, HardSection, HardText, RecipeStep, SafeNote, SectionTitle, SubHeader, Subtitle, TasteChip, TasteRow, Tip, glyph, s } from '@/components/ui';
+import { startCookAlarm, stopCookAlarm } from '@/lib/cook-timer';
 import { idemKey, toUiError } from '@/lib/errors';
 import { recipeImage } from '@/lib/images';
 import { useCore } from '@/lib/session';
 import { useToast } from '@/lib/toast';
 import { useLoad } from '@/lib/use-load';
 import { fonts } from '@/theme';
+
+/** Buiten de component: tijd lezen hoort niet bij renderen. */
+const clock = () => Date.now();
 
 const RATINGS = [['repeat', 'Voor herhaling'], ['fine', 'Prima'], ['rather_not', 'Liever anders']] as const;
 
@@ -47,6 +51,20 @@ export default function Koken() {
   const people = data.attendees.filter((a) => a.attendance !== 'no' && a.profileId).map((a) => ({ id: a.profileId!, name: data.bundle.profiles.find((p) => p.id === a.profileId)?.display_name ?? '' }));
   const img = recipeImage(recipe.image);
 
+  function toggleTimer(step: number, title: string, stepMinutes: number) {
+    if (timer?.step === step && remaining > 0) {
+      setTimer(null);
+      void stopCookAlarm();
+      return;
+    }
+    const start = clock();
+    setTimer({ step, until: start + stepMinutes * 60_000 });
+    setNow(start);
+    void startCookAlarm(stepMinutes * 60, title, recipe.name).then((ok) => {
+      if (!ok && Platform.OS !== 'web') toast('Zet meldingen voor Platefull aan in Instellingen om een alarm te horen.');
+    });
+  }
+
   async function complete() {
     setBusy(true); setError(null);
     try {
@@ -70,8 +88,8 @@ export default function Koken() {
         <RecipeStep key={i} index={i + 1} total={recipe.steps.length} title={st.title} body={st.body} minutes={st.minutes}>
           {st.minutes ? (
             <View style={{ marginTop: 8, alignSelf: 'flex-start' }}>
-              <Chip label={timer?.step === i ? (remaining > 0 ? `${glyph('◷')} ${Math.floor(remaining / 60)}:${String(remaining % 60).padStart(2, '0')}` : '✓ Tijd!') : `${glyph('◷')} Start timer`}
-                onPress={() => { setTimer({ step: i, until: Date.now() + st.minutes! * 60_000 }); setNow(Date.now()); }} />
+              <Chip label={timer?.step === i ? (remaining > 0 ? `${glyph('◷')} ${Math.floor(remaining / 60)}:${String(remaining % 60).padStart(2, '0')} · stop` : '✓ Tijd!') : `${glyph('◷')} Start timer`}
+                onPress={() => toggleTimer(i, st.title, st.minutes!)} />
             </View>
           ) : null}
         </RecipeStep>
