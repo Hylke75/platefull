@@ -1,6 +1,7 @@
 // S-01 / O-02: e-mail → eenmalige code van 6 cijfers. Account geldt pas als bevestigd bij een geldige sessie.
 import { useState } from 'react';
-import { KeyboardAvoidingView, Platform } from 'react-native';
+import { KeyboardAvoidingView, Linking, Platform } from 'react-native';
+import { LEGAL_URLS } from '@shared/core/constants';
 import { ScreenScroll } from '@/components/ScreenScroll';
 import { AppHeader, AppTitle, Button, Confirmation, Eyeline, Field, FormError, SafeNote } from '@/components/ui';
 import { isConfigured, supabase } from '@/lib/supabase';
@@ -59,6 +60,7 @@ export default function Login() {
         )}
         {error ? <FormError>{error}</FormError> : null}
         <SafeNote>Door in te loggen ga je akkoord met de voorwaarden en het privacybeleid. Alleen volwassenen hebben een account; kinderen krijgen een profiel zonder e-mailadres.</SafeNote>
+        <Button variant="plain" onPress={() => void Linking.openURL(LEGAL_URLS.privacy)}>Lees de privacyverklaring</Button>
       </ScreenScroll>
     </KeyboardAvoidingView>
   );

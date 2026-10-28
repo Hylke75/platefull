@@ -35,5 +35,5 @@ Het functioneel ontwerp (§17) vraagt om afwijkingen expliciet te documenteren. 
 
 - Redactionele controle van `src/domain/catalog/ingredients.ts` (allergenen, dieetvlaggen) door een deskundige.
 - Foto's voor de overige 27 recepten (bron en rechten).
-- Privacyverklaring/voorwaarden-teksten en contactadres voor privacyverzoeken (ook voor 12+).
+- Privacyverklaring staat op https://hylke75.github.io/platefull/privacy/ (bron: `legal/`). Nog te controleren door de opdrachtgever/jurist: verwerkingsverantwoordelijke (Link & Lead, KvK/adres), het bestaan van privacy@ en support@linkandlead.nl, verwerkersovereenkomsten met Supabase, Resend en Vercel, en het handmatig wissen van auth-accounts binnen 30 dagen. Algemene voorwaarden ontbreken nog.
 - Hosting van de webapp (Vercel). Het Supabase-project staat in `eu-west-2` (Londen, VK, buiten de EU maar met adequaatheidsbesluit); de opdrachtgever heeft daarmee ingestemd. Meenemen in de DPIA.

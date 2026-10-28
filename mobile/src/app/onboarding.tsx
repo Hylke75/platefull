@@ -1,9 +1,9 @@
 // S-02 Onboarding: O-03 t/m O-08. Overslaan mag; voortgang staat in households.onboarding_step.
 import { router } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Linking, Text, View } from 'react-native';
 import { savePreferences } from '@shared/core/actions';
-import { CONSENT_VERSIONS } from '@shared/core/constants';
+import { CONSENT_VERSIONS, LEGAL_URLS } from '@shared/core/constants';
 import { loadHousehold, loadProfiles, loadRules, type HouseholdRow, type ProfileRow } from '@shared/core/repo';
 import { TASTE_CARDS, TASTE_CHOICES } from '@shared/domain/catalog/taste-cards';
 import { ALLERGEN_CODES, ALLERGEN_LABELS, DIET_LABELS, STRICT_DIETS, type ProfileRule } from '@shared/domain/types';
@@ -125,6 +125,7 @@ function HouseholdStep({ busy, onSubmit }: { busy: boolean; onSubmit: (name: str
       </ChipRow>
       <Text style={s.fieldHint}>Elk gezin is anders — er hoeven geen twee ouders te zijn.</Text>
       <Checkbox checked={terms} onToggle={() => setTerms(!terms)} label="Ik ga akkoord met de voorwaarden en het privacybeleid" hint="We bewaren alleen wat nodig is: roepnamen, leeftijdscategorie en voorkeuren. Geen geboortedata, geen advertenties." />
+      <Button variant="plain" onPress={() => void Linking.openURL(LEGAL_URLS.privacy)}>Lees de privacyverklaring</Button>
       <Button wide disabled={!terms} busy={busy} onPress={() => onSubmit(name, diners)}>Verder →</Button>
       <Field label="Uitgenodigd door een andere ouder?" placeholder="Plak hier de uitnodiging" value={invite} onChangeText={setInvite} autoCapitalize="none" hint="Gebruik de link of code die je kreeg; je hoeft dan geen nieuw gezin aan te maken." />
       <Button wide variant="plain" disabled={!inviteToken} onPress={() => router.push({ pathname: '/uitnodiging', params: { token: inviteToken } })}>Uitnodiging openen</Button>

@@ -2,13 +2,13 @@
 import * as Crypto from 'expo-crypto';
 import { router } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { Alert, Share, Text, View } from 'react-native';
-import { CONSENT_VERSIONS } from '@shared/core/constants';
+import { Alert, Linking, Share, Text, View } from 'react-native';
+import { CONSENT_VERSIONS, LEGAL_URLS } from '@shared/core/constants';
 import { loadHousehold } from '@shared/core/repo';
 import { ALLERGEN_CODES, ALLERGEN_LABELS } from '@shared/domain/types';
 import { ScreenScroll } from '@/components/ScreenScroll';
 import {
-  AppTitle, Button, Checkbox, Chip, ChipRow, Field, FormError, HardSection, HardText, ParentToggle, SafeNote, SectionTitle, SubHeader, Subtitle, TasteChip, TasteRow, s,
+  ActionRow, AppTitle, Button, Checkbox, Chip, ChipRow, Field, FormError, HardSection, HardText, ParentToggle, SafeNote, SectionTitle, SubHeader, Subtitle, TasteChip, TasteRow, s,
 } from '@/components/ui';
 import { toUiError } from '@/lib/errors';
 import { useCore, useSession } from '@/lib/session';
@@ -150,7 +150,11 @@ export default function Instellingen() {
         <Button wide variant="orange" disabled={confirmText !== 'VERWIJDEREN'} onPress={remove}>Definitief verwijderen</Button>
       </HardSection>
       {error ? <FormError>{error}</FormError> : null}
-      <SafeNote>Plateful is geen medisch hulpmiddel. Privacyvragen (ook van kinderen vanaf 12 jaar): neem contact op via het privacyadres in de privacyverklaring.</SafeNote>
+      <ActionRow>
+        <Button variant="plain" onPress={() => void Linking.openURL(LEGAL_URLS.privacy)}>Privacyverklaring</Button>
+        <Button variant="plain" onPress={() => void Linking.openURL(LEGAL_URLS.support)}>Support</Button>
+      </ActionRow>
+      <SafeNote>Platefull is geen medisch hulpmiddel. Privacyvragen (ook van kinderen vanaf 12 jaar): mail naar privacy@linkandlead.nl.</SafeNote>
     </ScreenScroll>
   );
 }
