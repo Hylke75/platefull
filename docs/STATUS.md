@@ -57,6 +57,18 @@ E2E = `scripts/e2e-app.mjs` tegen een lokale Supabase-stack (Postgres 17, GoTrue
 | EAS-koppeling | ✅ | `extra.eas.projectId` staat in `mobile/app.json` (link-and-lead/platefull). Voor `eas build` is nog een `EXPO_TOKEN` of Expo-login nodig. |
 | Account definitief verwijderen | ⚠️ | App trekt rechten direct in en verwijdert gezinsdata; het auth-account zelf vereist de service-rol (web-API of nog te bouwen Edge Function). |
 
+## Gehost Supabase-project
+
+| Onderdeel | Status | Bewijs |
+| --- | --- | --- |
+| Project | ✅ | `platefull` (ref `jvmbdolxgjehwomzdpdb`), regio `eu-west-2` (Londen, VK; door opdrachtgever akkoord bevonden) |
+| Schema, RLS, functies | ✅ | Alle migraties in `supabase/migrations/` toegepast, incl. `20261028000100_search_path.sql` |
+| Catalogus | ✅ | `supabase/seed.sql`: 30 recepten, 87 ingrediënten, 36 allergeenkoppelingen, 16 varianten |
+| Rooktest op de echte database | ✅ | Als ingelogde gebruiker (teruggedraaid): gezin aanmaken, notenallergie vastleggen, recept met pesto geweigerd (PT422), veilig recept voorgesteld |
+| Inlogmail | ✅ | Code van 6 cijfers, 15 minuten geldig, NL-sjabloon voor zowel inloggen als eerste aanmelding; redirect `platefull://**` toegestaan |
+| Security advisors | ✅ | Alleen 'ingelogde gebruikers kunnen SECURITY DEFINER-functies aanroepen': bewust, elke functie controleert lidmaatschap |
+| Eigen SMTP | ❌ | Standaard-SMTP van Supabase: max. 2 mails per uur. Voor testers een eigen SMTP-dienst (bijv. Resend) instellen |
+
 ## Bekende beperkingen
 
 - Voor een gezin met een allergie zijn aanvankelijk weinig gerechten beschikbaar: samengestelde producten zijn pas bruikbaar na etiketcontrole. Dat volgt de conservatieve veiligheidsregel (R-01); de UI verwijst ernaar.

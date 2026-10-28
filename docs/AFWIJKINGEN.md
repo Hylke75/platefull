@@ -36,4 +36,4 @@ Het functioneel ontwerp (§17) vraagt om afwijkingen expliciet te documenteren. 
 - Redactionele controle van `src/domain/catalog/ingredients.ts` (allergenen, dieetvlaggen) door een deskundige.
 - Foto's voor de overige 27 recepten (bron en rechten).
 - Privacyverklaring/voorwaarden-teksten en contactadres voor privacyverzoeken (ook voor 12+).
-- Hosting (Vercel) en Supabase-project in EU-regio: pas na expliciete opdracht en ingestelde geheimen.
+- Hosting van de webapp (Vercel). Het Supabase-project staat in `eu-west-2` (Londen, VK, buiten de EU maar met adequaatheidsbesluit); de opdrachtgever heeft daarmee ingestemd. Meenemen in de DPIA.
